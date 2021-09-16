@@ -1,6 +1,24 @@
 import 'package:mobx/mobx.dart';
+//nome do arquivo.g.dart
+//Use o comando no terminal 'flutter pub run build_runner build'
+part 'controller.g.dart';
 
-class Controller {
+//Mesclando a classe ControllerBase com _$Controller
+class Controller = ControllerBase with _$Controller;
+
+//a utilização do mixin Store é para geração dos códigos automáticos
+abstract class ControllerBase with Store {
+
+  @observable
+  int contador = 0;
+  
+  @action
+  incrementar(){
+    contador++;
+  }
+
+  /*
+  //Usando sem o codegen, remova o abstract da class
   //Criando um observado
   Observable<int> _contador = Observable(0);
   //Criando uma ação
@@ -19,5 +37,6 @@ class Controller {
     //_contador.value = _contador.value + 1;
     contador++;
   }
+  */
   
 }
