@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx_aula/controller.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -8,13 +10,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _contador = 0;
+  // int _contador = 0;
 
-  void _incrementar() {
-    setState(() {
-      _contador++;
-    });
-  }
+  // void _incrementar() {
+  //   setState(() {
+  //     _contador++;
+  //   });
+  // }
+
+  Controller controller = Controller();
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +29,21 @@ class _HomeState extends State<Home> {
           children: [
             Padding(
               padding: EdgeInsets.all(16),
-              child: Text(
-                "${_contador}",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 80,
-                ),
+              //Observer é um widget que observer se ocorre alguma alteração e atualiza a tela
+              child: Observer(builder: (_) => Text(
+                  "${controller.contador}",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 80,
+                  ),
+                )
               ),
             ),
             Padding(
               padding: EdgeInsets.all(16),
               child: ElevatedButton(
-                onPressed: _incrementar,
+                // ignore: unnecessary_statements
+                onPressed: (){controller.incrementar!();},
                 child: Text(
                   "Incrementar",
                   style: TextStyle(
