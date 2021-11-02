@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 //nome do arquivo.g.dart
-//Use o comando no terminal 'flutter pub run build_runner build'
+//Use o comando no terminal 'flutter pub run build_runner build' ou 'flutter pub run build_runner watch'
 part 'controller.g.dart';
 
 //Mesclando a classe ControllerBase com _$Controller
@@ -9,13 +9,23 @@ class Controller = ControllerBase with _$Controller;
 //a utilização do mixin Store é para geração dos códigos automáticos
 abstract class ControllerBase with Store {
 
-  @observable
-  int contador = 0;
-  
-  @action
-  incrementar(){
-    contador++;
-  }
+  ControllerBase(){
+
+
+
+    //É chamada toda vez que um observable é alterado ou o autocomputado é acionado
+  //   autorun((_){
+  //     print(contador);
+  //   });
+  // }
+
+  // @observable
+  // int contador = 0;
+
+  // @action
+  // incrementar(){
+  //   contador++;
+  // }
 
   /*
   //Usando sem o codegen, remova o abstract da class
@@ -38,5 +48,5 @@ abstract class ControllerBase with Store {
     contador++;
   }
   */
-  
+  }
 }
